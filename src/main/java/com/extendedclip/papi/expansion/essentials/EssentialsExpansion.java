@@ -441,9 +441,9 @@ public class EssentialsExpansion extends PlaceholderExpansion {
     }
 
     private String format(double d) {
-        NumberFormat format = NumberFormat.getInstance(Locale.ENGLISH);
-        format.setMaximumFractionDigits(2);
-        format.setMinimumFractionDigits(0);
+        //NumberFormat format = NumberFormat.getInstance(Locale.ENGLISH);
+        //format.setMaximumFractionDigits(2);
+        //format.setMinimumFractionDigits(0);
         return format.format(d);
     }
 
