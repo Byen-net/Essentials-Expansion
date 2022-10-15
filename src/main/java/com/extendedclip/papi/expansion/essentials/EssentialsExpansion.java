@@ -38,6 +38,7 @@ import org.jetbrains.annotations.NotNull;
 import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
@@ -53,7 +54,7 @@ public class EssentialsExpansion extends PlaceholderExpansion {
     private String b;
     private String t;
     private String q;
-    private final DecimalFormat format = new DecimalFormat("#,###");
+    private final DecimalFormat format = new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ITALIAN));
 
     private Essentials essentials;
     private BalanceTop baltop;
@@ -452,7 +453,8 @@ public class EssentialsExpansion extends PlaceholderExpansion {
             return format(d);
         }
         if (d < 1000000L) {
-            return format(d / 1000L) + k;
+            return format(d);
+            //return format(d / 1000L) + k;
         }
         if (d < 1000000000L) {
             return format(d / 1000000L) + m;
@@ -467,6 +469,6 @@ public class EssentialsExpansion extends PlaceholderExpansion {
             return format(d / 1000000000000000L) + q;
         }
 
-        return String.valueOf(d);
+        return format.format(d);
     }
 }
